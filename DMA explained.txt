@@ -1,0 +1,127 @@
+In an MCU, DMA (Direct Memory Access) is a hardware block that can move data without CPU intervention.
+
+
+
+MCUs are resource-constrained, so DMA is used to:
+
+⏱️ Move data faster and more predictably
+
+😴 Let the CPU sleep while peripherals work
+
+🔁 Handle high-rate peripherals (ADC, UART, SPI, DAC, timers)
+
+
+With     DMA : Peripheral → DMA → RAM
+
+Without  DMA : Peripheral → interrupt → CPU → RAM
+
+
+
+Typical DMA use cases in MCUs:
+
+ADC sampling to RAM buffer
+
+UART RX/TX buffers
+
+SPI data streaming
+
+DAC waveform output
+
+Memory-to-memory copy
+
+
+DMA architecture in AVR XMEGA (XMEGA128)
+
+The XMEGA family was one of the first 8-bit AVRs with a real DMA controller.
+
+DMA controller features (XMEGA128)
+
+4 independent DMA channels
+
+Supports:
+
+Peripheral ↔ RAM
+
+RAM ↔ Peripheral
+
+RAM ↔ RAM
+
+Triggered by:
+
+Peripheral events (USART, ADC, SPI, timers, etc.)
+
+Software trigger
+
+
+
+
+
+
+DMA data flow in XMEGA
+
+Each DMA channel has:
+
+Source address
+
+Destination address
+
+Transfer count
+
+Address control
+
+Increment
+
+Decrement
+
+Fixed
+
+Trigger source
+
+Burst length (1, 2, 4, 8 bytes)
+
+Once configured:
+
+Hardware trigger fires
+
+DMA moves data
+
+CPU is not involved
+
+
+
+
+
+
+DMA works without CPU intervention because:
+
+The DMA controller is its own hardware block with:
+
+its own registers
+
+its own state machine
+
+direct access to the system buses
+
+Once the CPU configures it, the DMA acts like a tiny second processor whose only job is moving data.
+
+
+
+
+
+
+
+Each channel has registers like:
+
+DMA.CH0.SRCADDR
+
+DMA.CH0.DESTADDR
+
+DMA.CH0.TRFCNT
+
+DMA.CH0.CTRLA / CTRLB
+
+DMA.CH0.TRIGSRC
+
+Global control:
+
+DMA.CTRL (enable DMA, round-robin, priority)
