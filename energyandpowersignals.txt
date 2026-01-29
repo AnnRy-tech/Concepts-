@@ -1,0 +1,117 @@
+1. Energy signals (real-life examples)
+
+Idea:
+An energy signal has finite total energy and usually exists for a limited time or dies out.
+
+Mathematically (no stress): total energy is finite.
+
+Real-life examples
+🔊 A clap or shout
+
+You clap once → sound exists briefly → fades away
+
+Total sound energy is limited
+✅ Energy signal
+
+💡 Camera flash
+
+Very bright
+
+Very short duration
+
+Then… nothing
+✅ Energy signal
+
+📶 A single data packet sent over Wi-Fi
+
+Packet starts
+
+Packet ends
+
+Energy used is finite
+✅ Energy signal
+
+⚡ Lightning strike
+
+Huge intensity
+
+Extremely short time
+✅ Energy signal
+
+🎵 A recorded song (played once)
+
+Starts at time 0
+
+Ends after 3–4 minutes
+✅ Energy signal
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+2. Power signals (real-life examples)
+
+Idea:
+A power signal lasts for a very long time (theoretically infinite) and has finite average power, not finite total energy.
+
+Real-life examples
+🔌 Household AC voltage (230V / 120V)
+
+Keeps oscillating forever (as long as the grid is on)
+
+Average power is constant
+✅ Power signal
+
+📻 Radio carrier waves
+
+Radio stations transmit continuously
+
+Sinusoidal signals that don’t “end”
+✅ Power signal
+
+🕒 Clock signal in computers
+
+Square wave running nonstop
+
+Used to synchronize circuits
+✅ Power signal
+
+☀️ Sunlight (approximation)
+
+Continuous electromagnetic radiation
+
+Over very long time spans
+✅ Treated as a power signal
+
+3. Quick intuition shortcut 🧠
+
+Ask yourself:
+
+Does the signal end?
+
+✔️ Yes → Energy signal
+
+❌ No (keeps going) → Power signal
+
+4. Do “pure” power signals really exist?
+
+In the real world:
+
+Nothing is truly infinite
+
+But many signals last long enough that we model them as power signals
+
+So:
+
+Energy signals → very common & physically finite
+
+Power signals → idealized, but excellent approximations for real systems
+
+
+
+
+
+| Type              | Exists for      | Total Energy | Average Power |
+| ----------------- | --------------- | ------------ | ------------- |
+| **Energy signal** | short duration  | finite       | 0             |
+| **Power signal**  | long/continuous | infinite     | finite        |
+
