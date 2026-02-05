@@ -1,0 +1,71 @@
+Cell balancing is how a BMS keeps all the cells in a battery pack at similar state of charge (SoC).
+Since cells never age or behave exactly the same, balancing is critical for safety, capacity, and lifespan—especially in lithium-ion packs.
+
+
+
+Why balancing matters
+
+Prevents overcharge/over-discharge of individual cells
+
+Maximizes usable capacity (the weakest cell otherwise limits the pack)
+
+Extends battery life and improves reliability
+
+
+
+
+1) Passive balancing (most common)
+
+What it does: Bleeds extra charge from higher-voltage cells through resistors
+
+When: Usually near the top of charge
+
+Pros: Simple, cheap, reliable
+
+Cons: Wastes energy as heat, slower
+
+Common in consumer electronics and many EV packs where cost and simplicity matter.
+
+
+
+2) Active balancing
+
+What it does: Transfers energy from high cells to low cells (via capacitors, inductors, or DC-DC converters)
+
+When: Can operate during charge, discharge, or rest
+
+Pros: Efficient, faster, preserves energy
+
+Cons: More complex and expensive
+
+Seen in high-end EVs, large storage systems, and performance applications.
+
+When balancing happens
+
+Top balancing: Equalizes cells at full charge (common with passive methods)
+
+Bottom balancing: Equalizes near empty (less common, trickier)
+
+Continuous/dynamic: Active systems can balance anytime
+
+
+
+
+
+What a BMS actually controls
+
+Cell voltage sensing
+
+Balance enable/disable per cell
+
+Safety cutoffs (OV/UV, over-temp, over-current)
+
+Reporting SoC/SoH to the system
+
+
+
+
+
+
+
+
