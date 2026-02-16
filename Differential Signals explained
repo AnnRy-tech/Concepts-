@@ -1,0 +1,21 @@
+1. Definition
+A differential input measures the voltage difference between two points, rather than the voltage at one point relative to ground.
+V diff = Vplus - Vminus
+2. Why use differential input?
+Accurate measurement – you care about the voltage across a resistor, not its absolute voltage relative to ground.
+Noise rejection – if both lines pick up the same noise (called common-mode noise), it cancels out:
+V_ACP + noise - ( V_ACN + noise) = V_ACP - V_ACN
+This is why differential inputs are used in current sensing, operational amplifiers, and high-precision ADCs.
+3. Example with ACP and ACN
+
+Imagine a 10 mΩ sense resistor in series with your adapter.
+Current = 2 A → voltage across resistor = 0.02 V
+ACP sees the higher voltage side, ACN sees the lower voltage side
+Differential voltage:
+Vdiff = V_ACP- V_ACN = 0.02V
+I = V_ sense / R_ sense  ;  0.02V/0.01   = 2A
+4. Analogy
+
+Think of differential measurement like this:
+You have a rope between two points and want to know how much it stretches.
+You don’t care how high off the ground each end is—just the difference in height between the ends.
