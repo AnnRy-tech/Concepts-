@@ -175,6 +175,132 @@ PROCHOT = Processor Hot signal → A programmable output to the CPU.
 If the system or battery is stressed (high current or overheating), the chip can signal the CPU to throttle back, i.e., slow down to avoid damage.
 
 
+Hardware Part:
+
+1. Input Current Sense Resistor (R<sub>sense</sub>)
+
+A current sense resistor is a tiny resistor placed in series with the input current (from the adapter).
+
+By measuring the voltage drop across this resistor, the controller can calculate the input current using Ohm’s law:
+
+𝐼
+=
+𝑉
+𝑅
+𝑠
+𝑒
+𝑛
+𝑠
+𝑒
+𝑅
+𝑠
+𝑒
+𝑛
+𝑠
+𝑒
+I=
+R
+sense
+	​
+
+V
+R
+sense
+	​
+
+	​
+
+	​
+
+
+Negative input → The negative side of this resistor is being referred to. Often the controller pins are named ACN (AC negative) and ACP (AC positive).
+
+2. Optional 0.1-µF Capacitor ACN → GND (Common-mode filtering)
+
+Common-mode signals = Noise that is the same on both lines of a differential pair relative to ground.
+
+Example: Electrical interference from nearby switching regulators, motors, or Wi-Fi.
+
+Placing a 0.1-µF ceramic capacitor from ACN to GND filters out high-frequency noise that appears equally on both ACN and ACP.
+
+Think of it like a sponge that absorbs noise common to both lines.
+3. 0.1-µF Capacitor ACN → ACP (Differential-mode filtering)
+
+Differential-mode signals = Noise that appears between two wires (ACN vs ACP).
+
+Example: Switching spikes that only appear between the positive and negative lines.
+
+Placing a 0.1-µF capacitor across ACN and ACP smooths out these voltage spikes.
+
+Think of it as a damper for the “difference” between the two wires.
+
+
+1. ACDRV Charge Pump Source Input
+
+ACDRV → This is a pin that drives the external MOSFETs (ACFET and RBFET).
+
+Charge pump → A small circuit inside the IC that can boost voltage above the input supply to properly turn on MOSFETs.
+
+Why a charge pump?
+
+Some MOSFETs need a gate voltage higher than the source voltage to turn on fully.
+
+The ACDRV pin uses the charge pump to provide this extra voltage automatically.
+
+2. Place a 4 kΩ Resistor from CMSRC to common source of ACFET (Q1) and RBFET (Q2)
+
+CMSRC pin → “Current sense source” reference for ACFET/RBFET.
+
+Q1 = ACFET, Q2 = RBFET → These are the MOSFETs that switch adapter power in/out.
+
+4 kΩ resistor → Limits the inrush current (sudden spike) when the charge pump is powering the gates.
+
+Think: it’s like a small dam controlling water flow so it doesn’t flood.
+
+3. CMSRC grounded → ACDRV becomes logic output pulled up to REGN
+
+REGN → The internal regulated voltage inside the IC (like a 5V or 3.3V supply for logic).
+
+When CMSRC is grounded, the IC automatically converts the ACDRV pin to a logic output.
+
+Pulled up → The pin is normally at high voltage (REGN) unless actively pulled low.
+
+4. ACDRV HIGH = MOSFETs can be turned on
+
+ACDRV HIGH signals the external driver that it’s safe to turn on ACFET and RBFET.
+
+This ensures that the MOSFETs only switch when the controller is ready, preventing damage.
+
+5. Drives CMOS Logic directly
+
+ACDRV can connect straight to a CMOS gate driver without extra transistors.
+
+CMOS logic = standard digital input that recognizes high (1) and low (0) voltage.
+
+In simpler terms
+
+ACDRV pin → “Gate controller” for adapter MOSFETs.
+
+Charge pump → Boosts voltage to fully turn on MOSFETs.
+
+4 kΩ resistor on CMSRC → Limits sudden current when turning on MOSFET gates.
+
+ACDRV HIGH → Tells external circuitry it’s safe to switch MOSFETs.
+
+Works directly with standard CMOS logic signals.
+
+Analogy
+
+MOSFET gates are like car doors that need a strong push to open.
+
+Charge pump = hydraulic booster to push the door fully.
+
+4 kΩ resistor = a soft buffer so the push doesn’t damage the door.
+
+ACDRV HIGH = green light telling you “OK, open the door now!”
+
+
+
 
 
 
