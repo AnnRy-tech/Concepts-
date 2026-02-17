@@ -299,6 +299,60 @@ Charge pump = hydraulic booster to push the door fully.
 
 ACDRV HIGH = green light telling you “OK, open the door now!”
 
+1. Signal Overview
+
+ACOK: This is the output signal indicating whether a valid AC adapter is connected.
+
+Open-drain output: The pin itself cannot drive HIGH, it can only pull LOW. To get a HIGH logic level, you need an external pull-up resistor.
+
+Logic:
+
+HIGH → valid AC adapter present
+
+LOW → no valid AC adapter (or one of the required conditions is not met)
+
+2. Conditions for ACOK HIGH
+
+ACOK goes HIGH only if all of the following conditions are true:
+
+ACDET > 2.4 V
+
+This usually means the AC adapter is detected and supplying voltage above a threshold.
+
+VCC above UVLO (Under Voltage Lock Out) but below ACOV (AC Over Voltage)
+
+Ensures the system power rail is within safe limits.
+
+VCC above BAT
+
+Ensures the input voltage is higher than the battery voltage (common in charging circuits).
+
+If any of these conditions fail, the internal MOSFET inside the IC pulls ACOK LOW.
+
+3. Circuit Connection
+
+To use ACOK properly:
+
+Connect ACOK to a pull-up resistor.
+
+Connect the other side of the resistor to a valid logic HIGH supply rail (typically VCC or another regulated rail compatible with your MCU or logic levels).
+
+Typical resistor value: 10 kΩ (can range 4.7kΩ–20kΩ depending on speed/load requirements).
+
+When the adapter is valid, MOSFET is OFF → ACOK pulled HIGH by resistor.
+
+When the adapter is invalid, MOSFET is ON → ACOK pulled LOW to GND.
+
+4. Practical Notes
+
+Make sure the pull-up voltage matches the MCU or logic input voltage to avoid overvoltage.
+
+Open-drain allows multiple devices to share a single line if needed (wired-AND logic).
+
+The 10kΩ pull-up is a standard starting point; lower resistor values can drive faster edges but consume more current.
+
+
+
 
 
 
