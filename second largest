@@ -1,0 +1,19 @@
+def second_largest(arr):
+    if len(arr) < 2:
+        return -1
+
+    largest = None
+    second_largest = None
+
+    for num in arr:
+        # First number case OR new largest found
+        if largest is None or num > largest:
+            if largest is not None:
+                second_largest = largest
+            largest = num
+
+        # Update second largest (must be different from largest)
+        elif num != largest and (second_largest is None or num > second_largest):
+            second_largest = num
+
+    return second_largest if second_largest is not None else -1
