@@ -1,0 +1,16 @@
+A stack in Python is a data structure that follows the LIFO principle — Last In, First Out.
+This means the last element added to the stack is the first one removed.
+
+Think of it like a stack of plates 🍽️:
+
+You place a plate on top → push
+
+You remove the top plate → pop
+You cannot remove plates from the middle or bottom.
+
+Basic Stack Operations
+Operation	Meaning
+push()	Add an element to the top
+pop()	Remove the top element
+peek() / top	View the top element without removing it
+isEmpty()	Check if stack is empty
