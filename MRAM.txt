@@ -1,0 +1,150 @@
+
+
+RA6M1 MEMORY
+
+
+CODE FLASH 
+
+Non-volatile memory used to store your application program (firmware).
+
+Key points:
+
+Retains data even when power is OFF
+Typically larger than other memory types
+Stores compiled code (.hex / .bin files)
+
+In RA6M1:
+
+Up to 512 KB Code Flash
+Used for:
+Main program
+Interrupt vectors
+Constant data (if placed there)
+
+
+Think of it as the hard disk of the microcontroller
+
+
+
+
+DATA FLASH 
+What it is:
+Non-volatile memory used for storing user data that must persist after reset/power loss.
+
+Key points:
+
+Smaller than Code Flash
+Slower write/erase compared to SRAM
+Limited write cycles (wear matters)
+
+In RA6M1:
+
+Typically 8 KB Data Flash
+
+Used for:
+
+Calibration values
+Configuration settings
+EEPROM-like storage
+
+SRAM
+
+What it is:
+Volatile memory used during program execution.
+
+Key points:
+
+Lost when power is OFF
+Very fast read/write
+Used for runtime variables
+
+In RA6M1:
+
+Around 96 KB SRAM
+
+Used for:
+
+Stack
+Heap
+Global/local variables
+Buffers
+
+ANALOGY
+Code Flash → Your app installed on phone
+Data Flash → App settings saved permanently
+SRAM → Temporary memory while app runs
+
+
+
+
+Program is stored in Code Flash
+When MCU runs:
+Instructions execute from Code Flash
+Variables go into SRAM
+Important data is saved into Data Flash when needed
+
+
+
+
+TCM is a special type of SRAM directly connected to the CPU core, not through the normal system bus.
+Because it is physically and logically attached directly to the CPU core (like a private memory).
+
+
+
+MRAM
+
+
+MRAM (Magnetoresistive RAM) is:
+
+✅ Non-volatile (like Flash)
+✅ Fast (almost like SRAM for reads)
+✅ High endurance (no wear-out like Flash)
+
+👉 In RA8M2:
+
+~1 MB MRAM replaces both Code Flash and Data Flash
+
+👉 Important: SRAM is still separate and still required
+
+
+
+Magnetic state refers to the electrical resistance of a metal when it is placed in a magnetic field.
+The MRAM uses magnetic states and magnetisation direction in a ferromagnetic material(a material which is highly susceptible to magnetization to store data bits) for storing data and magneto-resistance for reading the stored data; instead of using the electrical bits to store your data.
+Information is stored using electron spin. It is sometimes called as "ideal memory". As it is a non-volatile type of memory, no refresh is required to retain the data and the power consumption is very less. 
+
+
+Why MRAM should be used? 
+DRAM has the advantage of being cheap, but is comparatively slow and data is lost when power is off. 
+
+SRAM, on the other hand is faster than DRAM. But it can cost upto 4 times as much as DRAM and data is lost when power is turned off. 
+
+FLASH memory saves data when the power is off, but the process is too slow and consumes a lot of power. 
+
+MRAM potentially combines the density of DRAM and the high speed of SRAM and the non-volatility of FLASH memory or hard disk, and all this is done using very less power. MRAM can resist high ionizing radiation, can operate in extreme temperature conditions and thus is very suitable for aerospace applications when combined with suitable CMOS technology. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
