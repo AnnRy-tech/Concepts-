@@ -111,7 +111,14 @@ MRAM (Magnetoresistive RAM) is:
 Magnetic state refers to the electrical resistance of a metal when it is placed in a magnetic field.
 The MRAM uses magnetic states and magnetisation direction in a ferromagnetic material(a material which is highly susceptible to magnetization to store data bits) for storing data and magneto-resistance for reading the stored data; instead of using the electrical bits to store your data.
 Information is stored using electron spin. It is sometimes called as "ideal memory". As it is a non-volatile type of memory, no refresh is required to retain the data and the power consumption is very less. 
+MRAM uses MTJ (Magnetic Tunnel Junction) to store bits of data. MTJ comprises of two layers of ferromagnetic materials: the reference layer and the free layer. An insulation layer is used to separate these two. Storing of a logical element (0 or 1) takes place by changing the resistance of an MTJ. The resistance depends on the relative spin orientations of two ferromagnetic layers, and can be of two types: high resistance or low resistance. 
 
+The reference layer is used to maintain the magnetic direction, while the free layer, can have its direction changed by using magnetic fields or by applying polarized currents. 
+ 
+
+A logical 0 is stored when both layers have same direction, hence MTJ has a low resistance. 
+ 
+A logical 1 is stored when both layers have different direction, hence MTJ has a high resistance. 
 
 Why MRAM should be used? 
 DRAM has the advantage of being cheap, but is comparatively slow and data is lost when power is off. 
